@@ -65,6 +65,10 @@
   .nav-links { display: flex; align-items: center; gap: 26px; }
   .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 0.92rem; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); font-weight: 500; }
+  .ico { vertical-align: -2px; display: inline-block; }
+  .footer-link { color: var(--ink-2); text-decoration: underline; }
+  .footer-link:hover { color: var(--accent); }
   .nav-cta {
     font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em;
     color: var(--paper); background: var(--accent); text-decoration: none;
@@ -254,6 +258,7 @@
         <div class="hero-cta">
           <a class="btn btn-primary" href="mailto:jperacchio8@gmail.com">Contact</a>
           <a class="btn btn-ghost" href="https://github.com/jack89-ML" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="assets/cv_jacopo_peracchio.pdf" download>Download CV <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg></a>
           <a class="link-inline" href="https://www.linkedin.com/in/jacopoperacchio/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
@@ -285,7 +290,7 @@
             <h3>Organized Crime</h3>
             <p>Social network analysis of illicit ecosystems, money laundering typologies, transnational flows.</p>
           </div>
-          <div class="ri-fig-wrap" data-fig="Fig. 02"><img class="ri-fig" src="assets/topic_organized-crime.jpg" alt="" loading="lazy"></div>
+          <div class="ri-fig-wrap" data-fig="Fig. 02"><img class="ri-fig" src="assets/gephi_prato_graph.jpg" alt="Gephi Social Network Analysis Graph" loading="lazy"></div>
         </li>
         <li class="ri">
           <span class="ri-num">03</span>
@@ -319,6 +324,7 @@
           <span class="chip-accent">OSINT: dorking, court records, Wayback Machine, digital footprint</span>
           <span class="chip-accent">Qualitative: ethnography, key-informant interviews</span>
           <span class="chip-accent">LLM multi-agent systems &amp; sociological theory</span>
+          <span class="chip-accent">Local-first &amp; privacy-preserving AI orchestration</span>
         </div>
       </div>
     </div>
@@ -352,26 +358,34 @@
         <li class="proj">
           <span class="ri-num">01</span>
           <div>
-            <h3><a href="https://github.com/jack89-ML/tallyho" target="_blank" rel="noopener">TallyHo</a></h3>
+            <h3><a href="https://github.com/jack89-ML/tallyho" target="_blank" rel="noopener">TallyHo <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></h3>
             <p class="desc">Italian electoral time series 1946 to today, municipality by municipality, from ministerial open data. Python CLI, CSV/JSON/XLSX/Parquet, 90+ tests, CI, Zenodo DOI.</p>
           </div>
-          <span class="meta">jack89-ML/tallyho</span>
+          <span class="meta">2026 &bull; jack89-ML/tallyho</span>
         </li>
         <li class="proj">
           <span class="ri-num">02</span>
           <div>
-            <h3><a href="https://github.com/jack89-ML/Arachne-Scholar" target="_blank" rel="noopener">Arachne-Scholar</a></h3>
+            <h3><a href="https://github.com/jack89-ML/Arachne-Scholar" target="_blank" rel="noopener">Arachne-Scholar <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></h3>
             <p class="desc">Local-first knowledge graph engine for academic literature via SVO dependency parsing. Runs fully offline on your own hardware.</p>
           </div>
-          <span class="meta">jack89-ML/Arachne-Scholar</span>
+          <span class="meta">2026 &bull; jack89-ML/Arachne-Scholar</span>
         </li>
         <li class="proj">
           <span class="ri-num">03</span>
           <div>
-            <h3><a href="https://github.com/jack89-ML/hybrid-kg-paper" target="_blank" rel="noopener">hybrid-kg-paper</a></h3>
+            <h3><a href="https://github.com/jack89-ML/hybrid-kg-paper" target="_blank" rel="noopener">hybrid-kg-paper <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a></h3>
             <p class="desc">Experiments on hybrid knowledge graphs (deterministic NLP + LLM) for scientific text. Reproducibility GED 0.0.</p>
           </div>
-          <span class="meta">jack89-ML/hybrid-kg-paper</span>
+          <span class="meta">2026 &bull; jack89-ML/hybrid-kg-paper</span>
+        </li>
+        <li class="proj">
+          <span class="ri-num">04</span>
+          <div>
+            <h3>Socio-Economic Spatial Analysis of Savelli</h3>
+            <p class="desc">Computational sociological study analyzing demographic, administrative, and spatial structures of the Sila municipalities.</p>
+          </div>
+          <span class="meta">Working Paper, 2026</span>
         </li>
       </ul>
     </div>
@@ -385,10 +399,10 @@
           <div class="years">2023-2026</div>
           <div>
             <h3>Università degli Studi di Torino</h3>
-            <div class="sub">Laurea Magistrale in Sociologia e Ricerca Sociale, Sociology</div>
+            <div class="sub">MA in Sociology and Social Research</div>
             <div class="detail"><span class="grade">110/110 cum laude</span></div>
             <div class="detail">Thesis: "Economic Networks and Illicit Practices in the Prato District: a Sociological Analysis of the Chinese Presence between Mafia Infiltration and Community Self-Regulation". Skills: organizational, information analysis.</div>
-            <div class="detail"><a class="link-inline" href="assets/tesi_magistrale.pdf" download>Download thesis (PDF)</a></div>
+            <div class="detail"><a class="link-inline" href="assets/tesi_magistrale.pdf" download>Download thesis (PDF) <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg></a></div>
           </div>
         </div>
         <div class="edu">
@@ -410,7 +424,7 @@
           <div class="years">2019-2023</div>
           <div>
             <h3>Università degli Studi di Firenze</h3>
-            <div class="sub">Scienze Politiche, Political Science</div>
+            <div class="sub">BA in Political Science</div>
             <div class="detail"><span class="grade">103/110</span></div>
             <div class="detail">Thesis: "New Technologies, Old Inequalities: a Critical Analysis of Digital Human Resources".</div>
           </div>
@@ -446,7 +460,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <span class="footer-line">Research-grade standards: reproducible, documented, auditable.</span>
+    <span class="footer-line">Research-grade standards: reproducible, documented, auditable. <a class="footer-link" href="assets/cv_jacopo_peracchio.pdf" download>Download CV</a></span>
     <span class="footer-name">Jacopo Peracchio</span>
   </div>
 </footer>
@@ -469,6 +483,30 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Scroll spy: highlight the nav link of the section currently in view.
+  // IntersectionObserver only, no scroll listener (respects reduced motion).
+  (function () {
+    var links = document.querySelectorAll('.site-header .nav-links a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var sec = document.getElementById(id);
+      if (sec) map[id] = a;
+    });
+    var ids = Object.keys(map);
+    if (!ids.length) return;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var a = map[entry.target.id];
+        if (a) a.classList.add('active');
+      });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    ids.forEach(function (id) { spy.observe(document.getElementById(id)); });
   })();
 </script>
 
