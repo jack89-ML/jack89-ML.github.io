@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacopo Peracchio - Open Source Analyst &amp; Computational Social Science</title>
+<meta name="description" content="Open Source Analyst and Computational Social Scientist. Hybrid threats, organized crime, illicit networks. Data pipelines, social network analysis, LLM multi-agent systems grounded in sociological theory.">
+<meta property="og:title" content="Jacopo Peracchio - Open Source Analyst">
+<meta property="og:description" content="Computational Social Science, OSINT, data pipelines. Research-grade standards: reproducible, documented, auditable.">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg-soft: #10101a;
+    --bg-card: #14141f;
+    --line: #23233a;
+    --text: #e8e8f0;
+    --text-dim: #9a9ab0;
+    --accent: #00e5ff;
+    --accent-dim: rgba(0, 229, 255, 0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: "Cascadia Code", "JetBrains Mono", Consolas, monospace; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; }
+  h2 { font-size: 1.6rem; margin-bottom: 28px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* HERO */
+  .hero { min-height: 100dvh; display: flex; align-items: center; border-top: none; }
+  .hero .container { width: 100%; }
+  .hero-tag {
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--accent); margin-bottom: 18px; font-weight: 600;
+  }
+  .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 700; margin-bottom: 12px; }
+  .hero .role { font-size: 1.15rem; color: var(--text-dim); max-width: 60ch; margin-bottom: 28px; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 11px 22px; border-radius: 8px;
+    font-weight: 600; font-size: 0.95rem; transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--accent); color: #07141a; }
+  .btn-primary:hover { background: #4deeff; text-decoration: none; }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .hero-meta { margin-top: 44px; display: flex; gap: 18px; flex-wrap: wrap; color: var(--text-dim); font-size: 0.9rem; }
+
+  /* INTERESTS */
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+  .tile { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .tile h3 { font-size: 1.02rem; margin-bottom: 8px; }
+  .tile p { font-size: 0.9rem; color: var(--text-dim); }
+
+  /* METHOD */
+  .method-block { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
+  .method-block p { color: var(--text-dim); max-width: 72ch; }
+  .theorists { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 0.82rem; padding: 5px 12px; border-radius: 999px; background: var(--accent-dim); border: 1px solid rgba(0,229,255,0.25); color: var(--accent); }
+
+  /* PROJECTS */
+  .proj { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .proj:last-child { border-bottom: none; }
+  .proj h3 { font-size: 1.1rem; }
+  .proj .desc { color: var(--text-dim); font-size: 0.92rem; max-width: 62ch; margin-top: 4px; }
+  .proj .meta { white-space: nowrap; color: var(--text-dim); font-size: 0.85rem; }
+
+  /* EDUCATION */
+  .edu { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .edu:last-child { border-bottom: none; }
+  .edu .years { color: var(--accent); font-weight: 600; font-size: 0.92rem; padding-top: 2px; }
+  .edu h3 { font-size: 1.05rem; }
+  .edu .sub { color: var(--text-dim); font-size: 0.9rem; margin-top: 2px; }
+  .edu .detail { color: var(--text-dim); font-size: 0.88rem; margin-top: 8px; }
+  .grade { color: var(--accent); font-weight: 600; }
+
+  /* LANGUAGES */
+  .lang { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+  .lang .tile h3 { font-size: 0.95rem; margin-bottom: 2px; }
+  .lang .tile .lvl { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+
+  /* CONTACT */
+  .contact-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 1.02rem; }
+
+  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--text-dim); font-size: 0.85rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 52px 0; }
+    .edu { grid-template-columns: 1fr; gap: 6px; }
+    .proj { flex-direction: column; gap: 8px; }
+    .proj .meta { white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag mono">Open Source Analyst</div>
+    <h1>Jacopo Peracchio</h1>
+    <p class="role">Computational social scientist building data pipelines and models for hybrid threats, organized crime and illicit networks. Research-grade standards: reproducible, documented, auditable.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:jperacchio8@gmail.com">Contact</a>
+      <a class="btn btn-ghost" href="https://github.com/jack89-ML" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/jacopoperacchio/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="hero-meta mono">
+      <span>Python / pandas / networkx</span>
+      <span>OSINT / SNA / LLM agents</span>
+      <span>IT · EN · ES · ZH</span>
+    </div>
+  </div>
+</header>
+
+<section id="interests">
+  <div class="container">
+    <h2>Research interests</h2>
+    <div class="grid-4">
+      <div class="tile">
+        <h3>Hybrid threats</h3>
+        <p>Influence operations, coordinated inauthentic behavior, astroturfing, disinformation dynamics.</p>
+      </div>
+      <div class="tile">
+        <h3>Organized crime</h3>
+        <p>Social network analysis of illicit ecosystems, money laundering typologies, transnational flows.</p>
+      </div>
+      <div class="tile">
+        <h3>Terrorism &amp; armed groups</h3>
+        <p>Mobilization dynamics, radicalization pathways, network structures of armed organizations.</p>
+      </div>
+      <div class="tile">
+        <h3>Transnational communities</h3>
+        <p>Diaspora networks as both risk and resilience factor, cultural codes and signaling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="container">
+    <h2>Method: social theory x multi-agent systems</h2>
+    <div class="method-block">
+      <p>I model social phenomena using explicit sociological theory implemented through LLM-powered multi-agent systems, not black-box prediction. Each agent carries a theoretical role with theory-driven behavioral rules; simulations are calibrated against observed data and validated with human expertise.</p>
+      <div class="theorists">
+        <span class="chip">Goffman</span>
+        <span class="chip">Weber</span>
+        <span class="chip">Merton</span>
+        <span class="chip">Bourdieu</span>
+        <span class="chip">Granovetter</span>
+        <span class="chip">Burt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="proj">
+      <div>
+        <h3><a href="https://github.com/jack89-ML/tallyho" target="_blank" rel="noopener">TallyHo</a></h3>
+        <p class="desc">Italian electoral time series 1946 to today, municipality by municipality, from ministerial open data. Python CLI, CSV/JSON/XLSX/Parquet, 90+ tests, CI, Zenodo DOI.</p>
+      </div>
+      <div class="meta mono">Python · main</div>
+    </div>
+    <div class="proj">
+      <div>
+        <h3><a href="https://github.com/jack89-ML/Arachne-Scholar" target="_blank" rel="noopener">Arachne-Scholar</a></h3>
+        <p class="desc">Local-first knowledge graph engine for academic literature via SVO dependency parsing. Runs fully offline on your own hardware.</p>
+      </div>
+      <div class="meta mono">Python · active</div>
+    </div>
+    <div class="proj">
+      <div>
+        <h3><a href="https://github.com/jack89-ML/hybrid-kg-paper" target="_blank" rel="noopener">hybrid-kg-paper</a></h3>
+        <p class="desc">Experiments on hybrid knowledge graphs (deterministic NLP + LLM) for scientific text. Reproducibility GED 0.0.</p>
+      </div>
+      <div class="meta mono">Python · research</div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <h2>Education</h2>
+
+    <div class="edu">
+      <div class="years mono">2023-2026</div>
+      <div>
+        <h3>Universita degli Studi di Torino</h3>
+        <div class="sub">Laurea Magistrale in Sociologia e Ricerca Sociale, Sociology</div>
+        <div class="detail"><span class="grade">110/110 cum laude</span></div>
+        <div class="detail">Thesis: "Economic Networks and Illicit Practices in the Prato District: a Sociological Analysis of the Chinese Presence between Mafia Infiltration and Community Self-Regulation". Skills: organizational, information analysis.</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="years mono">2025</div>
+      <div>
+        <h3>Universita degli Studi di Torino - Future Scenarios Lab</h3>
+        <div class="sub">Certificate, Apr 2025 - Jun 2025</div>
+        <div class="detail">Frameworks for future-scenario analysis: which factors and events correlate and show causal links with a phenomenon in its future development. Skills: information analysis, risk management.</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="years mono">2025</div>
+      <div>
+        <h3>Universita degli Studi di Torino - Algorithms &amp; Society Lab</h3>
+        <div class="sub">Certificate, Feb 2025 - Apr 2025</div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="years mono">2019-2023</div>
+      <div>
+        <h3>Universita degli Studi di Firenze</h3>
+        <div class="sub">Scienze Politiche, Political Science</div>
+        <div class="detail"><span class="grade">103/110</span></div>
+        <div class="detail">Thesis: "New Technologies, Old Inequalities: a Critical Analysis of Digital Human Resources".</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <div class="container">
+    <h2>Languages</h2>
+    <div class="lang">
+      <div class="tile"><h3>Italian</h3><div class="lvl">Native</div></div>
+      <div class="tile"><h3>English</h3><div class="lvl">B2</div></div>
+      <div class="tile"><h3>Spanish</h3><div class="lvl">B1</div></div>
+      <div class="tile"><h3>Chinese</h3><div class="lvl">A2</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:jperacchio8@gmail.com">jperacchio8@gmail.com</a>
+      <a href="https://github.com/jack89-ML" target="_blank" rel="noopener">github.com/jack89-ML</a>
+      <a href="https://www.linkedin.com/in/jacopoperacchio/" target="_blank" rel="noopener">linkedin.com/in/jacopoperacchio</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container mono">
+    Research-grade standards: reproducible, documented, auditable.
+  </div>
+</footer>
+
+</body>
+</html>
