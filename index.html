@@ -8,124 +8,143 @@
 <meta property="og:title" content="Jacopo Peracchio - Open Source Analyst">
 <meta property="og:description" content="Computational Social Science, OSINT, data pipelines. Research-grade standards: reproducible, documented, auditable.">
 <meta property="og:image" content="/assets/hero.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%230a0a0f'/><circle cx='8' cy='8' r='3.5' fill='none' stroke='%2300e5ff' stroke-width='1.4'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%2308090a'/><circle cx='8' cy='8' r='3.5' fill='none' stroke='%2300e5ff' stroke-width='1.4'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Design tokens: ONE accent (cyan #00e5ff), dark theme locked, radius system: cards 12px / CTA 8px / chips full-pill */
+  /* Tokens: Linear-style dark surfaces + single cyan accent (profile identity).
+     Radius system: cards 10px / CTA 6px / chips full-pill. Borders: semi-transparent white. */
   :root {
-    --bg: #0a0a0f;
-    --bg-soft: #10101a;
-    --bg-card: #14141f;
-    --line: #23233a;
-    --text: #e8e8f0;
-    --text-dim: #9a9ab0;
+    --bg: #08090a;
+    --bg-panel: #0f1011;
+    --bg-surface: #191a1b;
+    --text-1: #f7f8f8;
+    --text-2: #d0d6e0;
+    --text-3: #8a8f98;
+    --text-4: #62666d;
     --accent: #00e5ff;
-    --accent-dim: rgba(0, 229, 255, 0.12);
-    --r-card: 12px;
-    --r-cta: 8px;
+    --accent-dim: rgba(0, 229, 255, 0.10);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --r-card: 10px;
+    --r-cta: 6px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
-    color: var(--text);
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--text-1);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv01', 'ss03';
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  .mono { font-family: "Cascadia Code", "JetBrains Mono", Consolas, monospace; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
   .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 72px 0; border-top: 1px solid var(--line); }
-  h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; }
-  h2 { font-size: 1.6rem; margin-bottom: 28px; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  /* HERO: asymmetric split, image right, grayscale + overlay for texture coherence */
-  .hero { min-height: 100dvh; display: flex; align-items: center; border-top: none; padding: 0; }
+  /* ===== HERO: split, image right, image = grayscale texture ===== */
+  .hero { min-height: 100dvh; display: flex; align-items: center; padding: 72px 0; }
   .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; width: 100%; }
   .hero-tag {
-    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--accent); margin-bottom: 16px; font-weight: 600;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent);
+    margin-bottom: 16px; font-weight: 500;
   }
-  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); font-weight: 700; margin-bottom: 14px; }
-  .hero .role { font-size: 1.1rem; color: var(--text-dim); max-width: 46ch; margin-bottom: 28px; }
-  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 600;
+    letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 16px;
+  }
+  .hero .role { font-size: 1.06rem; color: var(--text-3); max-width: 46ch; margin-bottom: 30px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
-    display: inline-block; padding: 11px 22px; border-radius: var(--r-cta);
-    font-weight: 600; font-size: 0.95rem; transition: transform 0.15s ease, background 0.15s ease;
+    display: inline-block; padding: 9px 18px; border-radius: var(--r-cta);
+    font-weight: 500; font-size: 0.92rem;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
   .btn:active { transform: scale(0.97); }
-  .btn-primary { background: var(--accent); color: #07141a; }
+  .btn-primary { background: var(--accent); color: #06161c; }
   .btn-primary:hover { background: #4deeff; text-decoration: none; }
-  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost { background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--text-1); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  .hero-visual {
-    border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--line);
-    position: relative; aspect-ratio: 4/3;
+  .hero-visual { border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--border); position: relative; aspect-ratio: 4/3; }
+  .hero-visual img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.85) contrast(1.08) brightness(0.7); }
+  .hero-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(0,229,255,0.08), rgba(8,9,10,0.6)); }
+
+  /* ===== STACK strip under hero ===== */
+  .stack { padding: 24px 0 56px; }
+  .stack .container { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 0.8rem; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); color: var(--text-3); }
+
+  /* ===== TOPIC SECTIONS: full-viewport sequence, image reveal/fade ===== */
+  .topic {
+    position: relative; min-height: 100dvh; display: flex; align-items: center;
+    overflow: hidden; border-top: 1px solid var(--border-subtle);
   }
-  .hero-visual img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(0.85) contrast(1.08) brightness(0.72);
+  .topic-bg {
+    position: absolute; inset: 0; background-size: cover; background-position: center;
+    filter: grayscale(0.9) contrast(1.05) brightness(0.45);
+    opacity: 0; transform: scale(1.06);
+    transition: opacity 0.9s ease, transform 1.2s ease;
+    will-change: opacity, transform;
   }
-  .hero-visual::after {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(160deg, rgba(0,229,255,0.10), rgba(10,10,15,0.55));
-  }
+  .topic.in .topic-bg { opacity: 1; transform: scale(1); }
+  .topic-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,9,10,0.92) 0%, rgba(8,9,10,0.55) 55%, rgba(8,9,10,0.25) 100%); }
+  .topic-content { position: relative; z-index: 1; max-width: 620px; opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s; }
+  .topic.in .topic-content { opacity: 1; transform: translateY(0); }
+  .topic h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 14px; }
+  .topic p { color: var(--text-2); font-size: 1.0rem; max-width: 54ch; }
 
-  /* STACK strip: real capability info, sits under hero (not inside it) */
-  .stack { padding: 28px 0; border-top: 1px solid var(--line); }
-  .stack .container { display: flex; gap: 10px; flex-wrap: wrap; }
-  .chip { font-size: 0.82rem; padding: 5px 12px; border-radius: 999px; background: var(--bg-card); border: 1px solid var(--line); color: var(--text-dim); }
+  /* ===== METHOD ===== */
+  .method { padding: 96px 0; }
+  .method h2 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 24px; }
+  .method-block { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--r-card); padding: 32px; box-shadow: rgba(0,0,0,0.2) 0px 0px 0px 1px; }
+  .method-block p { color: var(--text-2); max-width: 70ch; }
+  .theorists { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip-accent { font-size: 0.8rem; padding: 4px 12px; border-radius: 999px; background: var(--accent-dim); border: 1px solid rgba(0,229,255,0.25); color: var(--accent); }
 
-  /* INTERESTS: 2x2 grid, tiles with border (cards carry real hierarchy) */
-  .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .tile { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--r-card); padding: 22px; }
-  .tile h3 { font-size: 1.02rem; margin-bottom: 8px; }
-  .tile p { font-size: 0.9rem; color: var(--text-dim); }
+  /* ===== PROJECTS: rows, hairline group ===== */
+  .projects { padding: 96px 0; border-top: 1px solid var(--border-subtle); }
+  .projects h2 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 28px; }
+  .proj { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border-subtle); }
+  .proj:first-of-type { border-top: 1px solid var(--border-subtle); }
+  .proj h3 { font-size: 1.1rem; font-weight: 500; }
+  .proj .desc { color: var(--text-3); font-size: 0.92rem; max-width: 62ch; margin-top: 4px; }
+  .proj .meta { white-space: nowrap; color: var(--text-4); font-size: 0.85rem; }
 
-  /* METHOD: full-width block, distinct layout family from tiles */
-  .method-block { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--r-card); padding: 30px; }
-  .method-block p { color: var(--text-dim); max-width: 72ch; }
-  .theorists { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip-accent { font-size: 0.82rem; padding: 5px 12px; border-radius: 999px; background: var(--accent-dim); border: 1px solid rgba(0,229,255,0.25); color: var(--accent); }
-
-  /* PROJECTS: rows with single bottom hairline (group, not per-row double borders) */
-  .proj { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-  .proj:first-of-type { border-top: 1px solid var(--line); }
-  .proj:last-child { border-bottom: none; }
-  .proj h3 { font-size: 1.1rem; }
-  .proj .desc { color: var(--text-dim); font-size: 0.92rem; max-width: 62ch; margin-top: 4px; }
-  .proj .meta { white-space: nowrap; color: var(--text-dim); font-size: 0.85rem; }
-
-  /* EDUCATION: two-column grid, different family from everything else */
-  .edu { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
-  .edu:first-of-type { border-top: 1px solid var(--line); }
-  .edu:last-child { border-bottom: none; }
-  .edu .years { color: var(--accent); font-weight: 600; font-size: 0.92rem; padding-top: 2px; }
-  .edu h3 { font-size: 1.05rem; }
-  .edu .sub { color: var(--text-dim); font-size: 0.9rem; margin-top: 2px; }
-  .edu .detail { color: var(--text-dim); font-size: 0.88rem; margin-top: 8px; }
+  /* ===== EDUCATION: two-column grid ===== */
+  .education { padding: 96px 0; border-top: 1px solid var(--border-subtle); }
+  .education h2 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 28px; }
+  .edu { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--border-subtle); }
+  .edu:first-of-type { border-top: 1px solid var(--border-subtle); }
+  .edu .years { color: var(--accent); font-weight: 500; font-size: 0.92rem; padding-top: 2px; }
+  .edu h3 { font-size: 1.05rem; font-weight: 500; }
+  .edu .sub { color: var(--text-3); font-size: 0.9rem; margin-top: 2px; }
+  .edu .detail { color: var(--text-3); font-size: 0.88rem; margin-top: 8px; }
   .grade { color: var(--accent); font-weight: 600; }
 
-  /* LANGUAGES: 2x2 grid, same family as interests but compact */
-  .lang { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .lang .tile h3 { font-size: 0.95rem; margin-bottom: 2px; }
-  .lang .tile .lvl { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+  /* ===== LANGUAGES + CONTACT ===== */
+  .languages, .contact { padding: 96px 0; border-top: 1px solid var(--border-subtle); }
+  .languages h2, .contact h2 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 28px; }
+  .lang { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .lang .tile { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; }
+  .lang .tile h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 2px; }
+  .lang .tile .lvl { color: var(--accent); font-size: 0.9rem; font-weight: 500; }
+  .contact-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 1.0rem; }
 
-  /* CONTACT: single intent, links only */
-  .contact-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 1.02rem; }
-
-  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); color: var(--text-dim); font-size: 0.85rem; }
+  footer { padding: 40px 0 60px; border-top: 1px solid var(--border-subtle); color: var(--text-4); font-size: 0.85rem; }
 
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; scroll-behavior: auto; }
+    .topic-bg, .topic-content { opacity: 1 !important; transform: none !important; }
   }
   @media (max-width: 760px) {
-    section { padding: 52px 0; }
+    .hero { padding: 48px 0; }
     .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero-visual { max-width: 100%; }
+    .topic { padding: 80px 0; }
     .edu { grid-template-columns: 1fr; gap: 6px; }
-    .grid-4, .lang { grid-template-columns: 1fr; }
+    .lang { grid-template-columns: 1fr; }
     .proj { flex-direction: column; gap: 8px; }
     .proj .meta { white-space: normal; }
   }
@@ -137,7 +156,7 @@
   <div class="container hero-grid">
     <div>
       <div class="hero-tag mono">Open Source Analyst</div>
-      <h1>Jacopo Peracchio</h1>
+      <h1>Jacopo<br>Peracchio</h1>
       <p class="role">Computational social scientist building data pipelines and models for hybrid threats, organized crime and illicit networks.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="mailto:jperacchio8@gmail.com">Contact</a>
@@ -164,31 +183,48 @@
   </div>
 </div>
 
-<section id="interests">
+<!-- Research topics: sequential full-viewport sections, image reveals on entry and fades on exit -->
+<section class="topic" id="hybrid">
+  <div class="topic-bg" style="background-image:url('assets/topic_hybrid-threats.jpg')"></div>
   <div class="container">
-    <h2>Research interests</h2>
-    <div class="grid-4">
-      <div class="tile">
-        <h3>Hybrid threats</h3>
-        <p>Influence operations, coordinated inauthentic behavior, astroturfing, disinformation dynamics.</p>
-      </div>
-      <div class="tile">
-        <h3>Organized crime</h3>
-        <p>Social network analysis of illicit ecosystems, money laundering typologies, transnational flows.</p>
-      </div>
-      <div class="tile">
-        <h3>Terrorism &amp; armed groups</h3>
-        <p>Mobilization dynamics, radicalization pathways, network structures of armed organizations.</p>
-      </div>
-      <div class="tile">
-        <h3>Transnational communities</h3>
-        <p>Diaspora networks as both risk and resilience factor, cultural codes and signaling.</p>
-      </div>
+    <div class="topic-content">
+<h2>Influence operations, disinformation, coordinated behavior.</h2>
+      <p>Astroturfing detection, coordinated inauthentic behavior, narrative manipulation across digital arenas.</p>
     </div>
   </div>
 </section>
 
-<section id="method">
+<section class="topic" id="crime">
+  <div class="topic-bg" style="background-image:url('assets/topic_organized-crime.jpg')"></div>
+  <div class="container">
+    <div class="topic-content">
+<h2>Illicit ecosystems mapped as networks, not anecdotes.</h2>
+      <p>Social network analysis of criminal economies, money laundering typologies, transnational flows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="terrorism">
+  <div class="topic-bg" style="background-image:url('assets/topic_terrorism.jpg')"></div>
+  <div class="container">
+    <div class="topic-content">
+<h2>Mobilization dynamics and network structures of violence.</h2>
+      <p>Radicalization pathways, recruitment structures, resilience patterns of armed organizations.</p>
+    </div>
+  </div>
+</section>
+
+<section class="topic" id="diaspora">
+  <div class="topic-bg" style="background-image:url('assets/topic_diaspora.jpg')"></div>
+  <div class="container">
+    <div class="topic-content">
+<h2>Diaspora networks as risk and resilience factor.</h2>
+      <p>Cultural codes, signaling, and the dual role of transnational communities in security dynamics.</p>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="method">
   <div class="container">
     <h2>Method: social theory x multi-agent systems</h2>
     <div class="method-block">
@@ -205,7 +241,7 @@
   </div>
 </section>
 
-<section id="projects">
+<section class="projects" id="projects">
   <div class="container">
     <h2>Projects</h2>
     <div class="proj">
@@ -232,7 +268,7 @@
   </div>
 </section>
 
-<section id="education">
+<section class="education" id="education">
   <div class="container">
     <h2>Education</h2>
 
@@ -275,7 +311,7 @@
   </div>
 </section>
 
-<section id="languages">
+<section class="languages" id="languages">
   <div class="container">
     <h2>Languages</h2>
     <div class="lang">
@@ -287,7 +323,7 @@
   </div>
 </section>
 
-<section id="contact">
+<section class="contact" id="contact">
   <div class="container">
     <h2>Contact</h2>
     <div class="contact-links">
@@ -303,6 +339,21 @@
     Research-grade standards: reproducible, documented, auditable.
   </div>
 </footer>
+
+<script>
+  // Reveal/fade topic sections on scroll. IntersectionObserver (no scroll listener).
+  var topics = document.querySelectorAll('.topic');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      } else {
+        entry.target.classList.remove('in');
+      }
+    });
+  }, { threshold: 0.25 });
+  topics.forEach(function (t) { observer.observe(t); });
+</script>
 
 </body>
 </html>
