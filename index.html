@@ -169,6 +169,18 @@
   }
   .hero-figure .frame { position: relative; z-index: 1; border: 1px solid var(--line); overflow: hidden; background: var(--panel); }
   .hero-figure img { display: block; width: 100%; height: auto; filter: grayscale(0.45) sepia(0.08) contrast(1.03); }
+  .hero-figure .frame { cursor: pointer; }
+  .hero-figure .hf-img { opacity: 0; transform: scale(1.05); transition: opacity 0.45s ease, transform 0.6s ease; }
+  .hero-figure .hf-cover {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    transition: opacity 0.4s ease;
+  }
+  .hero-figure:hover .hf-img, .hero-figure:focus-within .hf-img, .hero-figure.open .hf-img { opacity: 1; transform: scale(1); }
+  .hero-figure:hover .hf-cover, .hero-figure:focus-within .hf-cover, .hero-figure.open .hf-cover { opacity: 0; pointer-events: none; }
   .hero-figure figcaption {
     font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3);
     letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px;
@@ -188,40 +200,50 @@
   }
   .sec-note { color: var(--ink-2); max-width: 64ch; margin-bottom: 38px; font-size: 1.04rem; }
 
-  /* ===== Research programmes: 2x2 quad grid ===== */
+  /* ===== Research programmes: 2x2 quad grid, image reveals on hover ===== */
   .ri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .ri-card {
-    position: relative; z-index: 1;
-    background: var(--paper); border: 1px solid var(--line);
-    padding: 28px 26px 26px; min-height: 210px;
-    display: flex; flex-direction: column; justify-content: flex-start;
-    transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    position: relative; z-index: 1; overflow: hidden;
+    background: var(--panel); border: 1px solid var(--line);
+    padding: 26px 26px 24px; min-height: 220px;
+    display: flex; flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
+  .ri-img {
+    position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: grayscale(0.3) sepia(0.08) contrast(1.03);
+    opacity: 0; transform: scale(1.06);
+    transition: opacity 0.35s ease, transform 0.5s ease;
+  }
+  .ri-tint {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(160deg, rgba(110, 35, 24, 0.86), rgba(25, 24, 19, 0.84));
+    opacity: 0; transition: opacity 0.35s ease;
+  }
+  .ri-card > .ri-code, .ri-card > h3, .ri-card > .ri-desc { position: relative; z-index: 2; }
   .ri-card .ri-code {
     font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.14em; color: var(--ox); margin-bottom: 14px;
-    transition: color 0.22s ease;
+    letter-spacing: 0.14em; color: var(--ox); margin-bottom: 12px;
+    transition: color 0.3s ease;
   }
   .ri-card h3 {
     font-family: var(--disp); font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.03em; font-size: 1.08rem; line-height: 1.2;
-    color: var(--ink); transition: color 0.22s ease;
+    color: var(--ink); transition: color 0.3s ease;
   }
   .ri-card .ri-desc {
     color: var(--ink-2); font-size: 0.96rem; line-height: 1.55;
-    max-height: 0; opacity: 0; overflow: hidden;
-    transition: max-height 0.28s ease, opacity 0.24s ease, margin 0.28s ease, color 0.22s ease;
+    margin-top: 10px; max-width: 46ch; transition: color 0.3s ease;
   }
   .ri-card:hover, .ri-card:focus-within, .ri-card.open {
-    transform: scale(1.05); z-index: 3;
-    background: var(--ox-deep); border-color: var(--ox-deep);
-    box-shadow: 0 14px 34px rgba(25, 24, 19, 0.16);
+    transform: scale(1.04); z-index: 3; border-color: var(--ox-deep);
+    box-shadow: 0 16px 40px rgba(25, 24, 19, 0.22);
   }
+  .ri-card:hover .ri-img, .ri-card:focus-within .ri-img, .ri-card.open .ri-img { opacity: 1; transform: scale(1); }
+  .ri-card:hover .ri-tint, .ri-card:focus-within .ri-tint, .ri-card.open .ri-tint { opacity: 1; }
   .ri-card:hover .ri-code, .ri-card:focus-within .ri-code, .ri-card.open .ri-code { color: rgba(244, 242, 237, 0.72); }
   .ri-card:hover h3, .ri-card:focus-within h3, .ri-card.open h3 { color: var(--paper); }
-  .ri-card:hover .ri-desc, .ri-card:focus-within .ri-desc, .ri-card.open .ri-desc {
-    max-height: 240px; opacity: 1; margin-top: 12px; color: rgba(244, 242, 237, 0.88);
-  }
+  .ri-card:hover .ri-desc, .ri-card:focus-within .ri-desc, .ri-card.open .ri-desc { color: rgba(244, 242, 237, 0.9); }
 
   /* ===== Method & tradecraft ===== */
   .method { background: var(--panel); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -373,6 +395,8 @@
     body { background: #fff; font-size: 11.5pt; }
     .sec { padding: 24pt 0; }
     .redact { background: transparent !important; color: var(--ink) !important; }
+    .hf-img, .ri-img { opacity: 1 !important; transform: none !important; }
+    .hf-cover { display: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
     .contact, .method { background: #fff; }
     a { color: var(--ink); }
@@ -420,8 +444,9 @@
           </div>
         </div>
         <figure class="hero-figure rise rise-3">
-          <div class="frame">
-            <img src="assets/gephi_prato_graph.jpg" alt="Social network graph of an economic network, Gephi ForceAtlas2 layout" width="1200" height="800">
+          <div class="frame" tabindex="0">
+            <img class="hf-img" src="assets/gephi_prato_graph.jpg" alt="Social network graph of an economic network, Gephi ForceAtlas2 layout" width="1200" height="800">
+            <div class="hf-cover">Hover to unredact</div>
           </div>
           <figcaption>Plate 01 &mdash; Economic-network analysis, Prato district case study (Gephi, ForceAtlas2)</figcaption>
         </figure>
@@ -438,21 +463,29 @@
       <p class="sec-note">Four standing lines of work where social theory meets measurable, reproducible evidence. Hover a box to unseal its scope.</p>
       <div class="ri-grid">
         <div class="ri-card" tabindex="0">
+          <img class="ri-img" src="assets/rp_hybrid-threats.jpg" alt="" loading="lazy">
+          <div class="ri-tint"></div>
           <span class="ri-code">HT-01</span>
           <h3>Hybrid Threats</h3>
           <p class="ri-desc">Influence operations, coordinated inauthentic behaviour, astroturfing and disinformation dynamics &mdash; measured against verifiable open-source traces.</p>
         </div>
         <div class="ri-card" tabindex="0">
+          <img class="ri-img" src="assets/rp_organized-crime.jpg" alt="" loading="lazy">
+          <div class="ri-tint"></div>
           <span class="ri-code">OC-02</span>
           <h3>Organized Crime</h3>
           <p class="ri-desc">Social network analysis of illicit ecosystems, money-laundering typologies and transnational flows &mdash; grounded in field-tested methods from the Prato district study.</p>
         </div>
         <div class="ri-card" tabindex="0">
+          <img class="ri-img" src="assets/rp_terrorism.jpg" alt="" loading="lazy">
+          <div class="ri-tint"></div>
           <span class="ri-code">TAG-03</span>
           <h3>Terrorism &amp; Armed Groups</h3>
           <p class="ri-desc">Mobilisation dynamics, radicalisation pathways and network structures of armed organisations.</p>
         </div>
         <div class="ri-card" tabindex="0">
+          <img class="ri-img" src="assets/rp_social-online.jpg" alt="" loading="lazy">
+          <div class="ri-tint"></div>
           <span class="ri-code">SOO-04</span>
           <h3>Social Organisation Online</h3>
           <p class="ri-desc">How online collectives organise, signal and mobilise: synthetic influence networks and community self-regulation across diasporic spaces.</p>
@@ -726,6 +759,8 @@
       document.querySelectorAll('.ri-card').forEach(function (c) {
         c.addEventListener('click', function () { c.classList.toggle('open'); });
       });
+      var hf = document.querySelector('.hero-figure .frame');
+      if (hf) { hf.addEventListener('click', function () { document.querySelector('.hero-figure').classList.toggle('open'); }); }
     }
   })();
 
