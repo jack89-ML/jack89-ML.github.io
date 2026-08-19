@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jack89-ml.github.io/sitemap.xml
