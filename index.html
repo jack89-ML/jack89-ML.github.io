@@ -129,7 +129,7 @@
     color: var(--ink); letter-spacing: 0.02em;
   }
   .doc-meta .v .ok { color: var(--ox); }
-  .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: start; width: 100%; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: start; width: 100%; }
   .hero h1 {
     font-family: var(--disp); font-weight: 700; text-transform: uppercase;
     letter-spacing: -0.03em; line-height: 0.98;
@@ -162,29 +162,7 @@
   .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
   .btn-ghost:hover { border-color: var(--ox); color: var(--ox); }
   .link-inline { font-size: 0.95rem; font-weight: 500; }
-  .hero-figure { position: relative; }
-  .hero-figure::before {
-    content: ""; position: absolute; top: 14px; left: 14px; right: -14px; bottom: -14px;
-    border: 1px solid var(--ox); z-index: 0;
-  }
-  .hero-figure .frame { position: relative; z-index: 1; border: 1px solid var(--line); overflow: hidden; background: var(--panel); }
-  .hero-figure img { display: block; width: 100%; height: auto; filter: grayscale(0.45) sepia(0.08) contrast(1.03); }
-  .hero-figure .frame { cursor: pointer; }
-  .hero-figure .hf-img { opacity: 0; transform: scale(1.05); transition: opacity 0.45s ease, transform 0.6s ease; }
-  .hero-figure .hf-cover {
-    position: absolute; inset: 0; z-index: 2;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--ink); color: var(--paper);
-    font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    transition: opacity 0.4s ease;
-  }
-  .hero-figure:hover .hf-img, .hero-figure:focus-within .hf-img, .hero-figure.open .hf-img { opacity: 1; transform: scale(1); }
-  .hero-figure:hover .hf-cover, .hero-figure:focus-within .hf-cover, .hero-figure.open .hf-cover { opacity: 0; pointer-events: none; }
-  .hero-figure figcaption {
-    font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3);
-    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px;
-  }
+  /* hero: no figure — the plate now lives in the Research Programmes viewer */
 
   /* ===== Sections ===== */
   .sec { padding: 68px 0; }
@@ -200,50 +178,59 @@
   }
   .sec-note { color: var(--ink-2); max-width: 64ch; margin-bottom: 38px; font-size: 1.04rem; }
 
-  /* ===== Research programmes: 2x2 quad grid, image reveals on hover ===== */
-  .ri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  /* ===== Research programmes: cards + plate viewer ===== */
+  .ri-wrap { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 30px; align-items: start; }
+  .ri-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .ri-card {
-    position: relative; z-index: 1; overflow: hidden;
-    background: var(--panel); border: 1px solid var(--line);
-    padding: 26px 26px 24px; min-height: 220px;
-    display: flex; flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex; gap: 18px; align-items: stretch;
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .ri-img {
-    position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%;
-    object-fit: cover; filter: grayscale(0.3) sepia(0.08) contrast(1.03);
-    opacity: 0; transform: scale(1.06);
-    transition: opacity 0.35s ease, transform 0.5s ease;
+  .ri-thumb {
+    flex: 0 0 148px; width: 148px; min-height: 104px; object-fit: cover;
+    border: 1px solid var(--line); background: var(--panel);
+    filter: grayscale(0.35) sepia(0.08) contrast(1.03);
+    transition: filter 0.25s ease, transform 0.25s ease;
   }
-  .ri-tint {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(160deg, rgba(110, 35, 24, 0.86), rgba(25, 24, 19, 0.84));
-    opacity: 0; transition: opacity 0.35s ease;
-  }
-  .ri-card > .ri-code, .ri-card > h3, .ri-card > .ri-desc { position: relative; z-index: 2; }
+  .ri-body { flex: 1; align-self: center; }
   .ri-card .ri-code {
-    font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.14em; color: var(--ox); margin-bottom: 12px;
-    transition: color 0.3s ease;
+    font-family: var(--mono); font-size: 0.74rem; font-weight: 500;
+    letter-spacing: 0.14em; color: var(--ox);
   }
   .ri-card h3 {
     font-family: var(--disp); font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.03em; font-size: 1.08rem; line-height: 1.2;
-    color: var(--ink); transition: color 0.3s ease;
+    letter-spacing: 0.03em; font-size: 1.02rem; line-height: 1.2;
+    color: var(--ink); margin-top: 3px;
   }
   .ri-card .ri-desc {
-    color: var(--ink-2); font-size: 0.96rem; line-height: 1.55;
-    margin-top: 10px; max-width: 46ch; transition: color 0.3s ease;
+    color: var(--ink-2); font-size: 0.92rem; line-height: 1.5;
+    margin-top: 6px; max-width: 52ch;
   }
-  .ri-card:hover, .ri-card:focus-within, .ri-card.open {
-    transform: scale(1.04); z-index: 3; border-color: var(--ox-deep);
-    box-shadow: 0 16px 40px rgba(25, 24, 19, 0.22);
+  .ri-card:hover, .ri-card:focus-visible, .ri-card.active {
+    transform: translateY(-2px); border-color: var(--ox);
+    box-shadow: 0 10px 26px rgba(25, 24, 19, 0.13);
   }
-  .ri-card:hover .ri-img, .ri-card:focus-within .ri-img, .ri-card.open .ri-img { opacity: 1; transform: scale(1); }
-  .ri-card:hover .ri-tint, .ri-card:focus-within .ri-tint, .ri-card.open .ri-tint { opacity: 1; }
-  .ri-card:hover .ri-code, .ri-card:focus-within .ri-code, .ri-card.open .ri-code { color: rgba(244, 242, 237, 0.72); }
-  .ri-card:hover h3, .ri-card:focus-within h3, .ri-card.open h3 { color: var(--paper); }
-  .ri-card:hover .ri-desc, .ri-card:focus-within .ri-desc, .ri-card.open .ri-desc { color: rgba(244, 242, 237, 0.9); }
+  .ri-card:hover .ri-thumb, .ri-card:focus-visible .ri-thumb, .ri-card.active .ri-thumb {
+    filter: grayscale(0) sepia(0.03); transform: scale(1.02);
+  }
+  .ri-viewer { position: sticky; top: 92px; }
+  .ri-viewer-frame { position: relative; border: 1px solid var(--line); background: var(--panel); overflow: hidden; }
+  .ri-viewer-img { display: block; width: 100%; height: auto; filter: grayscale(0.15) sepia(0.05) contrast(1.02); }
+  .ri-viewer-cover {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase; text-align: center; padding: 0 24px;
+  }
+  .ri-viewer-cap {
+    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-top: 10px;
+    display: flex; gap: 12px; align-items: baseline;
+  }
+  .ri-viewer-code { color: var(--ox); font-weight: 500; }
+  @keyframes plateIn { from { opacity: 0; transform: scale(1.035); } to { opacity: 1; transform: none; } }
+  .ri-viewer-img.swap { animation: plateIn 0.4s ease; }
 
   /* ===== Method & tradecraft ===== */
   .method { background: var(--panel); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -368,8 +355,12 @@
     .doc-meta .cell:nth-child(-n+2) { border-top: none; }
     .doc-meta .cell:nth-child(odd) { border-left: none; padding-left: 0; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-    .hero-figure { max-width: 480px; }
+
     .ri-grid { grid-template-columns: 1fr; }
+    .ri-wrap { grid-template-columns: 1fr; gap: 22px; }
+    .ri-card { flex-direction: row; }
+    .ri-thumb { flex-basis: 96px; width: 96px; min-height: 72px; }
+    .ri-viewer { position: static; }
     .proj { grid-template-columns: 1fr; gap: 10px; }
     .edu { grid-template-columns: 1fr; gap: 5px; }
     .lang { grid-template-columns: repeat(2, 1fr); }
@@ -395,8 +386,7 @@
     body { background: #fff; font-size: 11.5pt; }
     .sec { padding: 24pt 0; }
     .redact { background: transparent !important; color: var(--ink) !important; }
-    .hf-img, .ri-img { opacity: 1 !important; transform: none !important; }
-    .hf-cover { display: none !important; }
+    .ri-viewer-cover { display: none !important; }
     .reveal { opacity: 1 !important; transform: none !important; }
     .contact, .method { background: #fff; }
     a { color: var(--ink); }
@@ -443,13 +433,6 @@
             <a class="link-inline" href="https://www.linkedin.com/in/jacopoperacchio/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <figure class="hero-figure rise rise-3">
-          <div class="frame" tabindex="0">
-            <img class="hf-img" src="assets/gephi_prato_graph.jpg" alt="Social network graph of an economic network, Gephi ForceAtlas2 layout" width="1200" height="800">
-            <div class="hf-cover">Hover to unredact</div>
-          </div>
-          <figcaption>Plate 01 &mdash; Economic-network analysis, Prato district case study (Gephi, ForceAtlas2)</figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -460,36 +443,49 @@
         <span class="sec-ref">&sect; 01</span>
         <h2 id="research-title">Research Programmes</h2>
       </div>
-      <p class="sec-note">Four standing lines of work where social theory meets measurable, reproducible evidence. Hover a box to unseal its scope.</p>
-      <div class="ri-grid">
-        <div class="ri-card" tabindex="0">
-          <img class="ri-img" src="assets/rp_hybrid-threats.jpg" alt="" loading="lazy">
-          <div class="ri-tint"></div>
-          <span class="ri-code">HT-01</span>
-          <h3>Hybrid Threats</h3>
-          <p class="ri-desc">Influence operations, coordinated inauthentic behaviour, astroturfing and disinformation dynamics &mdash; measured against verifiable open-source traces.</p>
+      <p class="sec-note">Four standing lines of work where social theory meets measurable, reproducible evidence. Hover a programme &mdash; its plate opens alongside.</p>
+      <div class="ri-wrap">
+        <div class="ri-grid" id="ri-list">
+          <div class="ri-card" tabindex="0" data-plate="assets/rp_hybrid-threats.jpg" data-code="HT-01">
+            <img class="ri-thumb" src="assets/rp_hybrid-threats.jpg" alt="" loading="lazy">
+            <div class="ri-body">
+              <span class="ri-code">HT-01</span>
+              <h3>Hybrid Threats</h3>
+              <p class="ri-desc">Influence operations, coordinated inauthentic behaviour, astroturfing and disinformation dynamics &mdash; measured against verifiable open-source traces.</p>
+            </div>
+          </div>
+          <div class="ri-card" tabindex="0" data-plate="assets/rp_organized-crime.jpg" data-code="OC-02">
+            <img class="ri-thumb" src="assets/rp_organized-crime.jpg" alt="" loading="lazy">
+            <div class="ri-body">
+              <span class="ri-code">OC-02</span>
+              <h3>Organized Crime</h3>
+              <p class="ri-desc">Social network analysis of illicit ecosystems, money-laundering typologies and transnational flows &mdash; grounded in field-tested methods from the Prato district study.</p>
+            </div>
+          </div>
+          <div class="ri-card" tabindex="0" data-plate="assets/rp_terrorism.jpg" data-code="TAG-03">
+            <img class="ri-thumb" src="assets/rp_terrorism.jpg" alt="" loading="lazy">
+            <div class="ri-body">
+              <span class="ri-code">TAG-03</span>
+              <h3>Terrorism &amp; Armed Groups</h3>
+              <p class="ri-desc">Mobilisation dynamics, radicalisation pathways and network structures of armed organisations.</p>
+            </div>
+          </div>
+          <div class="ri-card" tabindex="0" data-plate="assets/rp_social-online.jpg" data-code="SOO-04">
+            <img class="ri-thumb" src="assets/rp_social-online.jpg" alt="" loading="lazy">
+            <div class="ri-body">
+              <span class="ri-code">SOO-04</span>
+              <h3>Social Organisation Online</h3>
+              <p class="ri-desc">How online collectives organise, signal and mobilise: synthetic influence networks and community self-regulation across diasporic spaces.</p>
+            </div>
+          </div>
         </div>
-        <div class="ri-card" tabindex="0">
-          <img class="ri-img" src="assets/rp_organized-crime.jpg" alt="" loading="lazy">
-          <div class="ri-tint"></div>
-          <span class="ri-code">OC-02</span>
-          <h3>Organized Crime</h3>
-          <p class="ri-desc">Social network analysis of illicit ecosystems, money-laundering typologies and transnational flows &mdash; grounded in field-tested methods from the Prato district study.</p>
-        </div>
-        <div class="ri-card" tabindex="0">
-          <img class="ri-img" src="assets/rp_terrorism.jpg" alt="" loading="lazy">
-          <div class="ri-tint"></div>
-          <span class="ri-code">TAG-03</span>
-          <h3>Terrorism &amp; Armed Groups</h3>
-          <p class="ri-desc">Mobilisation dynamics, radicalisation pathways and network structures of armed organisations.</p>
-        </div>
-        <div class="ri-card" tabindex="0">
-          <img class="ri-img" src="assets/rp_social-online.jpg" alt="" loading="lazy">
-          <div class="ri-tint"></div>
-          <span class="ri-code">SOO-04</span>
-          <h3>Social Organisation Online</h3>
-          <p class="ri-desc">How online collectives organise, signal and mobilise: synthetic influence networks and community self-regulation across diasporic spaces.</p>
-        </div>
+        <aside class="ri-viewer" aria-label="Research plate viewer">
+          <div class="ri-viewer-frame">
+            <img class="ri-viewer-img" id="ri-plate" src="assets/rp_hybrid-threats.jpg" alt="Research programme plate" width="739" height="415">
+            <div class="ri-viewer-cover" id="ri-cover">Hover a programme to unseal its plate</div>
+          </div>
+          <p class="ri-viewer-cap"><span class="ri-viewer-code" id="ri-cap-code">PLATE</span> <span id="ri-cap-text">Fig. 01 &mdash; Plate sealed. Hover to declassify.</span></p>
+        </aside>
       </div>
     </div>
   </section>
@@ -748,6 +744,44 @@
     });
   })();
 
+  // Research programme plate viewer: hover/focus/tap a card — its plate opens alongside.
+  (function () {
+    var cards = document.querySelectorAll('.ri-card');
+    var plate = document.getElementById('ri-plate');
+    var cover = document.getElementById('ri-cover');
+    var capCode = document.getElementById('ri-cap-code');
+    var capText = document.getElementById('ri-cap-text');
+    if (!cards.length || !plate || !cover) return;
+    var figs = { 'HT-01': 'Fig. 01', 'OC-02': 'Fig. 02', 'TAG-03': 'Fig. 03', 'SOO-04': 'Fig. 04' };
+    var sealedText = capText.textContent;
+    function show(card) {
+      cards.forEach(function (c) { c.classList.remove('active'); });
+      card.classList.add('active');
+      var src = card.getAttribute('data-plate');
+      if (plate.getAttribute('src') !== src) {
+        plate.classList.remove('swap'); void plate.offsetWidth; plate.classList.add('swap');
+        plate.src = src;
+      }
+      cover.style.opacity = '0';
+      var code = card.getAttribute('data-code');
+      capCode.textContent = code + ' \u00b7 ' + (figs[code] || '');
+      capText.textContent = card.querySelector('h3').textContent + ' \u2014 plate declassified.';
+    }
+    function seal() {
+      cards.forEach(function (c) { c.classList.remove('active'); });
+      cover.style.opacity = '1';
+      capCode.textContent = 'PLATE';
+      capText.textContent = sealedText;
+    }
+    cards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () { show(card); });
+      card.addEventListener('focus', function () { show(card); });
+      card.addEventListener('mouseleave', seal);
+      card.addEventListener('blur', seal);
+      card.addEventListener('click', function () { show(card); });
+    });
+  })();
+
   // Touch devices have no hover: unredact the bars after a beat.
   (function () {
     if (!window.matchMedia) return;
@@ -759,8 +793,7 @@
       document.querySelectorAll('.ri-card').forEach(function (c) {
         c.addEventListener('click', function () { c.classList.toggle('open'); });
       });
-      var hf = document.querySelector('.hero-figure .frame');
-      if (hf) { hf.addEventListener('click', function () { document.querySelector('.hero-figure').classList.toggle('open'); }); }
+
     }
   })();
 
