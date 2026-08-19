@@ -3,21 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 - Page not found | Jacopo Peracchio</title>
+<title>404 — Page not found | Jacopo Peracchio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%23f4f2ed'/><rect x='3' y='6.5' width='10' height='3' fill='%23191813'/><rect x='5' y='11' width='6' height='1.5' fill='%238c2d1f'/></svg>">
 <style>
-  body { background: #f6f2ea; color: #1d1a16; font-family: Georgia, "Times New Roman", serif; display: flex; align-items: center; justify-content: center; min-height: 100dvh; margin: 0; }
-  .box { text-align: center; padding: 24px; }
-  .code { color: #9c3a2b; font-size: 3.4rem; font-weight: 700; line-height: 1; }
-  p { color: #4d4841; margin: 14px 0 26px; font-size: 1.05rem; }
-  a { color: #7d2c20; text-decoration: underline; }
-  a:hover { color: #1d1a16; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f4f2ed; color: #191813;
+    font-family: Georgia, 'Times New Roman', serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100dvh; margin: 0; text-align: center;
+  }
+  .banner {
+    background: #191813; color: #f4f2ed;
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+    font-size: 0.64rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 6px 12px; position: fixed; left: 0; right: 0;
+  }
+  .banner.top { top: 0; } .banner.bottom { bottom: 0; }
+  .box { padding: 24px; }
+  .code {
+    font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    color: #8c2d1f; font-size: 3.4rem; font-weight: 700; line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  p { color: #4e4b43; margin: 14px 0 26px; font-size: 1.05rem; }
+  a {
+    font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #f4f2ed; background: #8c2d1f; text-decoration: none;
+    padding: 11px 20px; border-radius: 2px;
+  }
+  a:hover { background: #6e2318; }
+  a:focus-visible { outline: 2px solid #8c2d1f; outline-offset: 3px; }
 </style>
 </head>
 <body>
-  <div class="box">
-    <div class="code">404</div>
-    <p>Page not found.</p>
-    <a href="/">Back to home</a>
-  </div>
+<div class="banner top" role="presentation">Unclassified&nbsp;//&nbsp;Open-Source Intelligence&nbsp;//&nbsp;Approved for Public Release</div>
+<div class="box">
+  <div class="code">404</div>
+  <p>Page not found.</p>
+  <a href="/">Back to home</a>
+</div>
+<div class="banner bottom" role="presentation">Unclassified&nbsp;//&nbsp;Open-Source Intelligence&nbsp;//&nbsp;Approved for Public Release</div>
 </body>
 </html>
