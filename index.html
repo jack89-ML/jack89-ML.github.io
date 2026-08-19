@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jacopo Peracchio — Open-Source Intelligence Analyst &amp; Computational Social Scientist</title>
-<meta name="description" content="OSINT analyst and computational social scientist. Collection and analysis pipelines for hybrid threats, organized crime and illicit networks — reproducible, documented, auditable. Open to senior analyst roles.">
+<meta name="description" content="OSINT analyst and computational social scientist. Collection and analysis pipelines for hybrid threats, organized crime and illicit networks — reproducible, documented, auditable. Open to OSINT & research roles.">
 <meta property="og:title" content="Jacopo Peracchio — Open-Source Intelligence Analyst">
 <meta property="og:description" content="Reproducible OSINT and computational social science: pipelines for hybrid threats, organized crime and illicit networks.">
-<meta property="og:image" content="assets/hero.jpg">
+<meta property="og:image" content="assets/gephi_prato_graph.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%23f4f2ed'/><rect x='3' y='6.5' width='10' height='3' fill='%23191813'/><rect x='5' y='11' width='6' height='1.5' fill='%238c2d1f'/></svg>">
 <link rel="stylesheet" href="assets/fonts/fonts-local.css">
@@ -188,47 +188,40 @@
   }
   .sec-note { color: var(--ink-2); max-width: 64ch; margin-bottom: 38px; font-size: 1.04rem; }
 
-  /* ===== Research programmes ===== */
-  .ri-list { list-style: none; border-top: 1px solid var(--line); }
-  .ri {
-    display: grid; grid-template-columns: 92px 1fr 148px; gap: 26px; align-items: center;
-    padding: 30px 0; border-bottom: 1px solid var(--line);
+  /* ===== Research programmes: 2x2 quad grid ===== */
+  .ri-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .ri-card {
+    position: relative; z-index: 1;
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 28px 26px 26px; min-height: 210px;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
   }
-  .ri-code { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; color: var(--ox); letter-spacing: 0.03em; }
-  .ri h3 {
-    font-family: var(--disp); font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.04em; font-size: 1.02rem; color: var(--ink); margin-bottom: 7px;
+  .ri-card .ri-code {
+    font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.14em; color: var(--ox); margin-bottom: 14px;
+    transition: color 0.22s ease;
   }
-  .ri p { color: var(--ink-2); font-size: 0.99rem; max-width: 56ch; }
-  .ri-fig { width: 148px; height: 100px; object-fit: cover; border: 1px solid var(--line); filter: grayscale(0.7) sepia(0.12) contrast(1.02); background: var(--panel); }
-  .ri-fig-wrap { position: relative; }
-  .ri-fig-wrap::after {
-    content: attr(data-fig); position: absolute; right: 6px; bottom: 6px;
-    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--paper); background: rgba(25, 24, 19, 0.65); padding: 2px 6px; border-radius: 2px;
+  .ri-card h3 {
+    font-family: var(--disp); font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.03em; font-size: 1.08rem; line-height: 1.2;
+    color: var(--ink); transition: color 0.22s ease;
   }
-
-/* ===== Key judgements ===== */
-.kj {
-  margin: 0 0 44px; border-left: 3px solid var(--ox);
-  background: var(--panel); padding: 22px 26px 20px;
-}
-.kj-title {
-  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ox);
-  display: block; margin-bottom: 12px;
-}
-.kj ul { list-style: none; }
-.kj li {
-  font-family: var(--serif); font-size: 1.06rem; line-height: 1.55;
-  color: var(--ink); padding-left: 18px; position: relative; margin-bottom: 9px;
-}
-.kj li:last-child { margin-bottom: 0; }
-.kj li::before {
-  content: "\25B8"; position: absolute; left: 0; top: 0;
-  font-size: 0.8em; color: var(--ox);
-}
-.kj li strong { font-weight: 600; }
+  .ri-card .ri-desc {
+    color: var(--ink-2); font-size: 0.96rem; line-height: 1.55;
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height 0.28s ease, opacity 0.24s ease, margin 0.28s ease, color 0.22s ease;
+  }
+  .ri-card:hover, .ri-card:focus-within, .ri-card.open {
+    transform: scale(1.05); z-index: 3;
+    background: var(--ox-deep); border-color: var(--ox-deep);
+    box-shadow: 0 14px 34px rgba(25, 24, 19, 0.16);
+  }
+  .ri-card:hover .ri-code, .ri-card:focus-within .ri-code, .ri-card.open .ri-code { color: rgba(244, 242, 237, 0.72); }
+  .ri-card:hover h3, .ri-card:focus-within h3, .ri-card.open h3 { color: var(--paper); }
+  .ri-card:hover .ri-desc, .ri-card:focus-within .ri-desc, .ri-card.open .ri-desc {
+    max-height: 240px; opacity: 1; margin-top: 12px; color: rgba(244, 242, 237, 0.88);
+  }
 
   /* ===== Method & tradecraft ===== */
   .method { background: var(--panel); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -285,40 +278,6 @@
   .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
   .badges img { display: block; height: 20px; width: auto; }
   .badges .badge-note { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-3); letter-spacing: 0.03em; }
-
-  /* ===== Analytic dossier (featured) ===== */
-  .dossier { background: var(--panel); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
-  .dossier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 6px; }
-  .dossier-class {
-    font-family: var(--mono); font-size: 0.64rem; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ink); background: rgba(25, 24, 19, 0.85);
-    padding: 4px 10px; border-radius: 2px; white-space: nowrap;
-  }
-  .bluf {
-    border-left: 3px solid var(--ox); background: var(--paper);
-    padding: 18px 24px 16px; margin: 18px 0 26px;
-  }
-  .bluf-title {
-    font-family: var(--mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--ox); display: block; margin-bottom: 10px;
-  }
-  .bluf li {
-    font-family: var(--serif); font-size: 1.0rem; line-height: 1.55; color: var(--ink);
-    list-style: none; padding-left: 16px; position: relative; margin-bottom: 7px;
-  }
-  .bluf li:last-child { margin-bottom: 0; }
-  .bluf li::before { content: "\25B8"; position: absolute; left: 0; color: var(--ox); font-size: 0.8em; }
-  .dossier-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: start; }
-  .chart-frame { background: var(--paper); border: 1px solid var(--line); padding: 20px 18px 14px; }
-  .chart-frame svg { display: block; width: 100%; height: auto; }
-  .chart-caption { font-family: var(--mono); font-size: 0.68rem; color: var(--ink-3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 12px; }
-  .dossier-side h3 { font-family: var(--disp); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
-  .dossier-side .k { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ox); display: block; margin-bottom: 3px; }
-  .dossier-side p { font-size: 0.93rem; color: var(--ink-2); line-height: 1.55; margin-bottom: 16px; }
-  .dossier-src {
-    margin-top: 26px; border-top: 1px solid var(--line); padding-top: 14px;
-    font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); line-height: 1.7; letter-spacing: 0.02em;
-  }
 
   /* ===== Education ===== */
   .edu-list { border-top: 1px solid var(--line); }
@@ -388,8 +347,7 @@
     .doc-meta .cell:nth-child(odd) { border-left: none; padding-left: 0; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero-figure { max-width: 480px; }
-    .ri { grid-template-columns: 64px 1fr; }
-    .ri-fig-wrap { display: none; }
+    .ri-grid { grid-template-columns: 1fr; }
     .proj { grid-template-columns: 1fr; gap: 10px; }
     .edu { grid-template-columns: 1fr; gap: 5px; }
     .lang { grid-template-columns: repeat(2, 1fr); }
@@ -398,7 +356,6 @@
     .lang .cell:nth-child(odd) { border-left: none; padding-left: 0; }
     .standards { grid-template-columns: 1fr; }
     .stack-inner { flex-direction: column; gap: 10px; }
-    .dossier-grid { grid-template-columns: 1fr; gap: 26px; }
   }
   @media (max-width: 560px) {
     .nav-links .nav-link { display: none; }
@@ -433,7 +390,6 @@
       <a class="nav-link" href="#research">Research</a>
       <a class="nav-link" href="#method">Method</a>
       <a class="nav-link" href="#products">Products</a>
-      <a class="nav-link" href="#dossier">Dossier</a>
       <a class="nav-link" href="#education">Education</a>
       <a class="nav-cta" href="mailto:jacopo.pc@protonmail.com">Contact</a>
     </div>
@@ -448,21 +404,13 @@
         <div class="cell"><span class="k">Ref</span><span class="v">JP/OSINT/2026</span></div>
         <div class="cell"><span class="k">Role</span><span class="v">Open-Source Intelligence Analyst</span></div>
         <div class="cell"><span class="k">Focus</span><span class="v">Hybrid Threats &middot; Illicit Networks</span></div>
-        <div class="cell"><span class="k">Status</span><span class="v"><span class="ok">&#9679;</span> Available &mdash; Senior OSINT Roles</span></div>
+        <div class="cell"><span class="k">Status</span><span class="v"><span class="ok">&#9679;</span> Available &mdash; OSINT &amp; Research Roles</span></div>
       </div>
       <div class="hero-grid">
         <div>
           <h1 class="rise rise-2">Jacopo<br>Peracchio</h1>
           <p class="lead rise rise-3">I investigate <span class="redact" tabindex="0">hybrid threats</span>, <span class="redact" tabindex="0">organized crime</span> and <span class="redact" tabindex="0">illicit networks</span> with reproducible pipelines built entirely from open sources &mdash; every claim traceable, every dataset auditable.</p>
           <p class="declass-note rise rise-3">Nothing on this page is classified &mdash; hover the bars to verify.</p>
-          <div class="kj rise rise-3" aria-label="Key judgements">
-            <span class="kj-title">Key judgements</span>
-            <ul>
-              <li><strong>Proof of work:</strong> a DOI-cited electoral-data pipeline and a local-first knowledge-graph engine, both in production &mdash; not portfolio pieces.</li>
-              <li><strong>Field-tested method:</strong> network analysis of a live criminal-economics case, the Prato district (MA thesis, 110/110 cum laude).</li>
-              <li><strong>Looking for:</strong> senior analyst roles where method rigor and tradecraft are the product.</li>
-            </ul>
-          </div>
           <div class="hero-cta rise rise-4">
             <a class="btn btn-primary" href="mailto:jacopo.pc@protonmail.com">Get in touch</a>
             <a class="btn btn-ghost" href="https://github.com/jack89-ML" target="_blank" rel="noopener">GitHub</a>
@@ -473,9 +421,9 @@
         </div>
         <figure class="hero-figure rise rise-3">
           <div class="frame">
-            <img src="assets/hero.jpg" alt="Analytical workspace" width="1200" height="800">
+            <img src="assets/gephi_prato_graph.jpg" alt="Social network graph of an economic network, Gephi ForceAtlas2 layout" width="1200" height="800">
           </div>
-          <figcaption>Plate 01 &mdash; Analytical workspace, field setup</figcaption>
+          <figcaption>Plate 01 &mdash; Economic-network analysis, Prato district case study (Gephi, ForceAtlas2)</figcaption>
         </figure>
       </div>
     </div>
@@ -487,41 +435,29 @@
         <span class="sec-ref">&sect; 01</span>
         <h2 id="research-title">Research Programmes</h2>
       </div>
-      <p class="sec-note">Four standing lines of work where social theory meets measurable, reproducible evidence.</p>
-      <ul class="ri-list">
-        <li class="ri">
+      <p class="sec-note">Four standing lines of work where social theory meets measurable, reproducible evidence. Hover a box to unseal its scope.</p>
+      <div class="ri-grid">
+        <div class="ri-card" tabindex="0">
           <span class="ri-code">HT-01</span>
-          <div class="ri-body">
-            <h3>Hybrid Threats</h3>
-            <p>Influence operations, coordinated inauthentic behaviour, astroturfing, disinformation dynamics.</p>
-          </div>
-          <div class="ri-fig-wrap" data-fig="Fig. 01"><img class="ri-fig" src="assets/topic_hybrid-threats.jpg" alt="" loading="lazy"></div>
-        </li>
-        <li class="ri">
+          <h3>Hybrid Threats</h3>
+          <p class="ri-desc">Influence operations, coordinated inauthentic behaviour, astroturfing and disinformation dynamics &mdash; measured against verifiable open-source traces.</p>
+        </div>
+        <div class="ri-card" tabindex="0">
           <span class="ri-code">OC-02</span>
-          <div class="ri-body">
-            <h3>Organized Crime</h3>
-            <p>Social network analysis of illicit ecosystems, money-laundering typologies, transnational flows.</p>
-          </div>
-          <div class="ri-fig-wrap" data-fig="Fig. 02"><img class="ri-fig" src="assets/gephi_prato_graph.jpg" alt="Gephi social network analysis graph of an economic network" loading="lazy"></div>
-        </li>
-        <li class="ri">
+          <h3>Organized Crime</h3>
+          <p class="ri-desc">Social network analysis of illicit ecosystems, money-laundering typologies and transnational flows &mdash; grounded in field-tested methods from the Prato district study.</p>
+        </div>
+        <div class="ri-card" tabindex="0">
           <span class="ri-code">TAG-03</span>
-          <div class="ri-body">
-            <h3>Terrorism &amp; Armed Groups</h3>
-            <p>Mobilisation dynamics, radicalisation pathways, network structures of armed organisations.</p>
-          </div>
-          <div class="ri-fig-wrap" data-fig="Fig. 03"><img class="ri-fig" src="assets/topic_terrorism.jpg" alt="" loading="lazy"></div>
-        </li>
-        <li class="ri">
+          <h3>Terrorism &amp; Armed Groups</h3>
+          <p class="ri-desc">Mobilisation dynamics, radicalisation pathways and network structures of armed organisations.</p>
+        </div>
+        <div class="ri-card" tabindex="0">
           <span class="ri-code">SOO-04</span>
-          <div class="ri-body">
-            <h3>Social Organisation Online</h3>
-            <p>Astroturfing, coordinated inauthentic behaviour and synthetic influence networks: how online collectives organise, signal and mobilise.</p>
-          </div>
-          <div class="ri-fig-wrap" data-fig="Fig. 04"><img class="ri-fig" src="assets/topic_diaspora.jpg" alt="" loading="lazy"></div>
-        </li>
-      </ul>
+          <h3>Social Organisation Online</h3>
+          <p class="ri-desc">How online collectives organise, signal and mobilise: synthetic influence networks and community self-regulation across diasporic spaces.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -624,103 +560,21 @@
           </div>
         </li>
         <li class="proj">
-          <span class="proj-tag">Working paper</span>
-          <div>
-            <h3>Socio-Economic Spatial Analysis of Savelli</h3>
-            <p class="desc">Computational sociological study of demographic, administrative and spatial structures across the Sila municipalities.</p>
-            <p class="meta">2026 &middot; in progress</p>
-          </div>
-        </li>
-        <li class="proj">
           <span class="proj-tag">MA thesis</span>
           <div>
             <h3>Economic Networks and Illicit Practices in the Prato District</h3>
             <p class="desc">Sociological analysis of the Chinese presence in Prato between mafia-type infiltration and community self-regulation &mdash; fieldwork and network analysis on a live case.</p>
-            <p class="meta">110/110 cum laude &middot; <a href="assets/tesi_magistrale.pdf" download>PDF</a></p>
+            <p class="meta">110/110 cum laude &middot; <a href="assets/abstract_tesi.pdf" download>Abstract</a> &middot; <a href="assets/tesi_magistrale.pdf" download>PDF</a></p>
           </div>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="dossier sec" id="dossier" aria-labelledby="dossier-title">
-    <div class="container reveal">
-      <div class="sec-head">
-        <span class="sec-ref">&sect; 04</span>
-        <h2 id="dossier-title">Featured Dossier &mdash; Savelli (KR), 1996&ndash;2023</h2>
-        <span class="dossier-class">Analytic product &middot; OS</span>
-      </div>
-      <div class="bluf">
-        <span class="bluf-title">Bottom line</span>
-        <ul>
-          <li>Municipal-election turnout in Savelli fell from <strong>68.5% (1996) to 49.3% (2023)</strong> &mdash; a 19-point drop that crossed the 50% line in 2018 and has stayed under it.</li>
-          <li>The registered electorate peaked at 1,892 in 2013 and has since fallen to 1,662 &mdash; disengagement compounds depopulation.</li>
-          <li>Every figure below was collected from the Ministry of the Interior portal by <strong>TallyHo</strong> (see &sect; 03) &mdash; the same pipeline, re-runnable by anyone.</li>
-        </ul>
-      </div>
-      <div class="dossier-grid">
-        <div class="chart-frame">
-          <svg viewBox="0 0 640 320" role="img" aria-label="Line chart of municipal election turnout in Savelli from 1996 to 2023, falling from 68.5 percent to 49.3 percent">
-            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#6e6a60">
-              <text x="18" y="72">70%</text>
-              <text x="18" y="149">60%</text>
-              <text x="18" y="226">50%</text>
-            </g>
-            <g stroke="rgba(25,24,19,0.10)" stroke-width="1">
-              <line x1="60" y1="68" x2="610" y2="68"/>
-              <line x1="60" y1="145" x2="610" y2="145"/>
-            </g>
-            <line x1="60" y1="222" x2="610" y2="222" stroke="#8c2d1f" stroke-width="1" stroke-dasharray="4 4" opacity="0.55"/>
-            <text x="614" y="226" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8c2d1f">50%</text>
-            <polyline fill="none" stroke="#191813" stroke-width="2" points="60,80 152,69 243,120 335,184 427,208 518,226 610,227"/>
-            <g fill="#8c2d1f" stroke="#f4f2ed" stroke-width="2">
-              <circle cx="60" cy="80" r="4.5"/>
-              <circle cx="152" cy="69" r="4.5"/>
-              <circle cx="243" cy="120" r="4.5"/>
-              <circle cx="335" cy="184" r="4.5"/>
-              <circle cx="427" cy="208" r="4.5"/>
-              <circle cx="518" cy="226" r="4.5"/>
-              <circle cx="610" cy="227" r="4.5"/>
-            </g>
-            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#191813" text-anchor="middle">
-              <text x="60" y="66">68.5</text>
-              <text x="152" y="55">69.9</text>
-              <text x="243" y="106">63.3</text>
-              <text x="335" y="170">55.0</text>
-              <text x="427" y="196">51.7</text>
-              <text x="518" y="248" fill="#8c2d1f">49.4</text>
-              <text x="610" y="249" fill="#8c2d1f">49.3</text>
-            </g>
-            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#6e6a60" text-anchor="middle">
-              <text x="60" y="290">1996</text>
-              <text x="152" y="290">1998</text>
-              <text x="243" y="290">2003</text>
-              <text x="335" y="290">2008</text>
-              <text x="427" y="290">2013</text>
-              <text x="518" y="290">2018</text>
-              <text x="610" y="290">2023</text>
-            </g>
-            <text x="60" y="312" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6e6a60">Municipal elections &middot; first round &middot; turnout %</text>
-          </svg>
-          <p class="chart-caption">Fig. 05 &mdash; Turnout, municipal elections 1996&ndash;2023. Dashed line: 50%.</p>
-        </div>
-        <div class="dossier-side">
-          <span class="k">Method</span>
-          <p>Collection via TallyHo v1.0.0 against the ministerial historical-elections portal: 163 electoral dates scanned, 12 consultations retrieved for the municipality, zero errors.</p>
-          <span class="k">Why it matters</span>
-          <p>Savelli is one of the small Sila municipalities under study in the working paper below (&sect; 03). Turnout decline and electorate shrinkage are the demographic backbone of that analysis.</p>
-          <span class="k">Verify it</span>
-          <p>The full series &mdash; candidates, votes, lists &mdash; is one command away in the <a href="https://github.com/jack89-ML/tallyho" target="_blank" rel="noopener">TallyHo repository</a>.</p>
-        </div>
-      </div>
-      <p class="dossier-src">SOURCE &mdash; elezionistorico.interno.gov.it (DAIT, Ministero dell&rsquo;Interno), municipal elections, Savelli (KR) &middot; extracted 19 Aug 2026 with TallyHo v1.0.0, cache 51% &middot; processing: dedup by date, first-round turnout = votanti/elettori</p>
-    </div>
-  </section>
-
   <section class="sec" id="education" aria-labelledby="education-title">
     <div class="container reveal">
       <div class="sec-head">
-        <span class="sec-ref">&sect; 05</span>
+        <span class="sec-ref">&sect; 04</span>
         <h2 id="education-title">Education</h2>
       </div>
       <div class="edu-list">
@@ -762,7 +616,7 @@
   <section class="sec" id="languages" aria-labelledby="languages-title">
     <div class="container reveal">
       <div class="sec-head">
-        <span class="sec-ref">&sect; 06</span>
+        <span class="sec-ref">&sect; 05</span>
         <h2 id="languages-title">Languages</h2>
       </div>
       <div class="lang">
@@ -778,7 +632,7 @@
   <section class="contact sec" id="contact" aria-labelledby="contact-title">
     <div class="container reveal">
       <div class="sec-head">
-        <span class="sec-ref">&sect; 07</span>
+        <span class="sec-ref">&sect; 06</span>
         <h2 id="contact-title">Contact</h2>
       </div>
       <a class="contact-email" href="mailto:jacopo.pc@protonmail.com">jacopo.pc@protonmail.com</a>
@@ -868,6 +722,10 @@
       setTimeout(function () {
         document.querySelectorAll('.redact').forEach(function (r) { r.classList.add('open'); });
       }, 1100);
+      // Research cards open on tap when there is no hover.
+      document.querySelectorAll('.ri-card').forEach(function (c) {
+        c.addEventListener('click', function () { c.classList.toggle('open'); });
+      });
     }
   })();
 
