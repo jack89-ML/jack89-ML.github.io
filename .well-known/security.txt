@@ -1,4 +1,4 @@
-Contact: mailto:jacopo.pc@protonmail.com
+Contact: mailto:jacopo.peracchio@protonmail.com
 Expires: 2027-08-19T23:59:59.000Z
 Encryption: https://jack89-ml.github.io/assets/jacopo_peracchio.pub.asc
 Preferred-Languages: it, en
